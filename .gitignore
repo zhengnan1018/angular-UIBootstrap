@@ -3,6 +3,7 @@ _Store目录下的所有文件
 
 #忽略node_modules目录下的所有文件
 node_modules
+bower_components
 npm-debug.log
 
 #仅仅忽略 demo/.svn文件
