@@ -8,7 +8,7 @@
  * Controller of the angularUiBootstrapApp
  */
 angular.module('angularUiBootstrapApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('AboutCtrl', function ($scope, $parse) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -27,5 +27,13 @@ angular.module('angularUiBootstrapApp')
       {
         title: 'Dynamic Group Header - 2',
         content: 'Dynamic Group Body - 2'
-      }]
+      }];
+    $scope.$watch('beforeParseVal', function(newVal, beforeVal, scope) {
+      if (newVal !== beforeVal) {
+        console.log(123);
+        var parseFun = $parse(newVal)
+        console.log(parseFun(scope));
+        $scope.afterParseVal = parseFun(scope)
+      }
+    })
   });
